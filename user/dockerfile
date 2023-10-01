@@ -1,0 +1,21 @@
+# install an basic image java is jdk version 17 it's a image
+FROM openjdk:17
+
+# copy .jar file after build move to opt folder of the image, we have install above
+COPY target/user-0.0.1-SNAPSHOT.jar /opt/user.jar
+
+# post to start application
+EXPOSE 8080
+
+# install some library that's support running application.
+# RUN install some thing, additional you can enter name libraries to file and call filename by command Run
+# RUN yum update -y && yum install -y \
+#     package1 \
+#     package2 \
+#     package3
+
+# set to working directory
+WORKDIR /opt
+
+# ENTRYPOINT
+CMD ["java","-jar","/opt/user.jar"]
